@@ -23,4 +23,32 @@ The aim of this project is to classify from 2 different subreddits, /r/Bitcoin a
 
 ### Conclusions and Recommendations
 
+### Models Train/Test Score Comparison Table
+| Models | CVEC(Train score) | CVEC(Test score) | Diff(%) | Tfidf (Train score) | Tfidf(Test score) | Diff(%) |
+| --- | --- | --- | --- | --- |--- | --- |
+| Baseline | 54.68% | 54.68% | - | 54.68% | 54.68% | - |
+| Random Forest |75.45% | 74.27% | 1.18% | 75.37% | 74.51% | 0.86% |
+| Logistic Regreesion | 79.50% | **79.85%** | **0.35%** | 80.63% | 79.37% | 1.26% |
+| Naive Bayes | 81.20% | **80.34%** | **0.86%** | 80.71% | 79.61% | 1.1% |
+| Supporting Vector Machine | 74.80% | 73.79% | 1.01% | 77.23%| 77.43% | 0.20% |
+
+
+### Classification Matrix Table
+| Evaluation Metrics | Model 1: Random Forest | Model 2: Logistic Regression | Model 3: Navie Bayes |Model 4: Supporting Vector Machine |
+| --- | --- | --- | --- | --- |
+| Accuracy | 74.51% | **79.85%** | **80.34%** | 77.43% | 
+| Sensitivity | 54.55% | 66.84% | 78.61% | 81.82% | 
+| Specificity | 91.11% | 90.67% | 81.78% | 73.78% | 
+| Precision | 83.61% | 85.62% | 78.19% | 72.17% | 
+
+All four models (Random Forest, Logistic Regression, Naive Bayes, and Support Vector Machine) exceed the baseline accuracy of 54.68% by at least 1.3x as almost models performed with an accuracy greater than 75% except Random Forest, demonstrating strong ability to classify at least 3 in 4 posts into the correct subreddit. However, the winner was definitely **the Multinomial Naive Bayes model, which was able to correctly 4 in 5 posts or 80.34%**. This is within expectation because the topics of two chosen subreddits are quite similar. 
+
+Therefore, this is the model we would recommend Reddit Data Team to implement to help them classify error/buggy posts that have lost their subreddit tags and also help users, investors or anyone who interested in both subreddits preventing misunderstand and to not make investment mistakes in crptocurrency trading in the future.
+
+Further improvements for the model include:
+
+- Collecting more training data not only just Text data but also Pic posted in a post as a feature to classify subreddits.
+- Enhancing the model's ability to classify more than two subreddits in our classification model. 
+- Tuning of parameters for any models to get a better score. However, this requires a longer amount of time to tune to get the perfect parameters.
+
 

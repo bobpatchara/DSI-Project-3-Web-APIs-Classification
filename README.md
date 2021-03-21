@@ -18,8 +18,16 @@ The aim of this project is to classify from 2 different subreddits, /r/Bitcoin a
 
 ### Executive Summary
 
+The main DSI Project 3: Web APIs and Classification with NLP notebook begins by looping requests to pull data using Reddit's API from /r/Bitcoin (The Currency of the internet subreddit with 2,608,220 subscribers for news about cryptocurrency) and /r/dogecoin (“a cryptocurrency inspired by shiba inu meme in 2013 with 1,222,786 subscribers). The extracted data is in the form of a dictionary with key-value pairs corresponding to different features of a post (e.g. name, id, selftext, subreddit). We focus on the title and selftext of the posts in order to conduct natural language processing eventhough the actual body of many of these posts consist of memes in the form of images, which unfortunately is beyond our capacity to parse at this stage but we will remove all unnecessary in the cleaning step.
 
+In the data cleaning process, we get rid of duplicate posts, fill NaN values with empty string for 'text', else the operation cannot be done, extract an element value from an XML string (i.e. &amp, &gt, &lt), and create a function to clean data like removing stopwords, non-letters, etc.). We then convert all post dictionaries into a dataframe of the title of and sub-Reddit source, but binarize the sub-Reddit source (our target variable). The dataset is then partitioned into a 75-25 train/test split before going through a pipeline consisting of the CountVectoeizer & the TF-IDF Vectorizer, and fit against one of 4 models:
 
+- Random Forest Classifier
+- Logistic Regression
+- Multinomial Naive Bayes
+- Support Vector Machine
+
+Each stage of the pipeline is optimized using a Grid Search of all major parameters of the vectorizer/model in an attempt to ensure the best fit, then compared against the Baseline Accuracy of 54.68% resulting from the case when we predict the majority class (Dogecoin sub-Reddit) for all observations.
 
 ### Conclusions and Recommendations
 
